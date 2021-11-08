@@ -1,0 +1,40 @@
+{
+  "name": "proshop",
+  "version": "1.0.0",
+  "description": "MERN shoping cart app",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server",
+    "dev": "nodemon src/server",
+    "data:import": "node src/seeder",
+    "data:destroy": "node src/seeder -d",
+    "lint": "eslint src/",
+    "lint:fix": "npm run lint --fix",
+    "format": "npx prettier --write .",
+    "clean-logs": "rm -v logs/*"
+  },
+  "author": "Minh Tai",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^8.6.3",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http-errors": "^1.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.6",
+    "winston": "^3.3.3",
+    "winston-daily-rotate-file": "^4.5.5"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.4.1"
+  }
+}
