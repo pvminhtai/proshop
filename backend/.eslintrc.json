@@ -14,7 +14,15 @@
   },
   "rules": {
     "arrow-parens": ["error", "as-needed"],
-    "no-unused-vars": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ],
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off"
   }

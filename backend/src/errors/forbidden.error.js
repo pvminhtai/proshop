@@ -1,8 +1,8 @@
-const { STATUS_CODES } = require('../../constants');
+const { STATUS_CODES } = require('../constants');
 
 class ForbiddenError extends Error {
   constructor(message) {
-    super(message || 'Forbidden!');
+    super(message ?? 'Forbidden!');
     this.status = STATUS_CODES.FORBIDDEN;
   }
 }

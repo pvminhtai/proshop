@@ -1,18 +1,35 @@
-const { Unauthorized, Forbidden } = require('http-errors');
-const jwt = require('jsonwebtoken');
+const { Unauthorized } = require('http-errors');
 const { ACCESS_TOKEN_SECRET } = require('../configs');
+const {
+  USER_ROLES: { GUEST }
+} = require('../constants');
+const { verifyToken, logger } = require('../helpers');
+const { User } = require('../models');
 
-const authenticate = (req, res, next) => {
-  const authHeader = req.headers.authorization;
+const authenticate = async (req, res, next) => {
+  const { authorization } = req.headers;
+  req.user.role = [GUEST];
 
-  if (!authHeader) return next(Unauthorized('Missing headers token'));
+  if (!authorization) return next(new Unauthorized('Missing headers token'));
 
-  const token = authHeader.split(' ')[1];
+  const token = authorization.split(' ')[1];
 
-  jwt.verify(token, ACCESS_TOKEN_SECRET, (error, payload) => {
-    if (error) throw Forbidden('Invalid token!');
-    req.user = payload;
-  });
+  try {
+    const tokenPayload = verifyToken(token, ACCESS_TOKEN_SECRET);
+
+    const user = await User.findById(tokenPayload._id);
+    if (!user) {
+      return next(new Unauthorized('Invalid user!'));
+    }
+
+    Reflect.deleteProperty(user, 'password');
+    Reflect.deleteProperty(user, 'salt');
+
+    req.user = user;
+  } catch (error) {
+    logger.error(error);
+    return next(error);
+  }
 
   return next();
 };

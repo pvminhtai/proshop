@@ -1,12 +1,9 @@
 require('dotenv').config();
 const users = require('./data/user');
-const Order = require('./database/models/order.model');
-const Product = require('./database/models/product.model');
-const User = require('./database/models/user.model');
-
 const products = require('./data/products');
 
 const connectDB = require('./loaders/mongoose');
+const { Order, Product, User } = require('./models');
 
 connectDB();
 

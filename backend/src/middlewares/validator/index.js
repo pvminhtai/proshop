@@ -40,7 +40,7 @@ const validate =
     });
 
     if (errors.length) {
-      ctx.sendBadRequest('Schema validation failed.', errors);
+      ctx.sendBadRequestError('Schema validation failed.', errors);
     }
 
     return next();

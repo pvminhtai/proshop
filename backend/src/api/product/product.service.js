@@ -1,6 +1,7 @@
 const { NotFound } = require('http-errors');
-const { Product } = require('../../database/models');
+const { Product } = require('../../models');
 const { logger } = require('../../helpers');
+const { NotFoundError } = require('../../errors');
 
 class ProductService {
   async getProducts() {
@@ -23,7 +24,8 @@ class ProductService {
       const product = await Product.findById(id);
 
       if (!product) {
-        throw NotFound(`Product ID ${id} was not found`);
+        // throw new NotFound(`Product ID ${id} was not found`);
+        throw new NotFoundError();
       }
 
       return {
@@ -53,7 +55,7 @@ class ProductService {
       const product = await Product.findByIdAndUpdate(id, data);
 
       if (!product) {
-        throw NotFound(`Product ID ${id} was not found`);
+        throw new NotFound(`Product ID ${id} was not found`);
       }
 
       return {
@@ -71,7 +73,7 @@ class ProductService {
       const product = await Product.findByIdAndDelete(id);
 
       if (!product) {
-        throw NotFound(`Product ID ${id} was not found`);
+        throw new NotFound(`Product ID ${id} was not found`);
       }
 
       return {

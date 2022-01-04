@@ -18,10 +18,10 @@ API.forEach(folder => {
 
   try {
     const routes = require(`${pathName}.routes`);
-    const controller = require(`${pathName}.controller`);
+    const controllers = require(`${pathName}.controller`);
 
     routes.forEach(({ path, method, action, roles }) => {
-      const { validateRequest, handler, ...middlewares } = controller[action];
+      const { validateRequest, handler, ...middlewares } = controllers[action];
 
       router[method](
         `${API_PREFIX}${path}`,

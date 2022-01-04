@@ -19,7 +19,7 @@ class Context {
   }
 
   getSortQuery() {
-    const { sortBy, order } = this.req.query;
+    // const { sortBy, order } = this.req.query;
     return {};
   }
 
@@ -60,9 +60,9 @@ class Context {
     this.res.json(this.payload);
   }
 
-  sendError(error) {
-    this.res.status(error.status);
-    this.send(error.message);
+  sendError(error, ...args) {
+    this.res.status(error.status ?? STATUS_CODES.INTERNAL_SERVER_ERROR);
+    this.send(error.message, ...args);
   }
 
   sendSuccessResponse(...args) {
@@ -95,8 +95,8 @@ class Context {
     this.send(...args);
   }
 
-  sendServerError(...args) {
-    this.res.status(STATUS_CODES.SERVER_ERROR);
+  sendInternalServerError(...args) {
+    this.res.status(STATUS_CODES.INTERNAL_SERVER_ERROR);
     this.send(...args);
   }
 }

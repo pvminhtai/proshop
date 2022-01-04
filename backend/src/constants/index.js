@@ -1,13 +1,3 @@
-exports.LOG_LEVEL = {
-  ERROR: 'error',
-  WARN: 'warn',
-  INFO: 'info',
-  HTTP: 'http',
-  VERBOSE: 'verbose',
-  DEBUG: 'debug',
-  SILLY: 'silly'
-};
-
 exports.API_PREFIX = '/api/v1';
 
 exports.ALLOWED_ROUTE_METHOD = {
@@ -33,11 +23,21 @@ exports.STATUS_CODES = {
   UNAUTHORIZED: 401,
   FORBIDDEN: 403,
   NOT_FOUND: 404,
-  SERVER_ERROR: 500
+  INTERNAL_SERVER_ERROR: 500
 };
 
 exports.USER_ROLES = {
   ADMIN: 'Admin',
   USER: 'User',
   GUEST: 'Guest'
+};
+
+exports.LOG_LEVEL = {
+  ERROR: 'error',
+  WARN: 'warn',
+  INFO: 'info',
+  HTTP: 'http',
+  VERBOSE: 'verbose',
+  DEBUG: 'debug',
+  SILLY: 'silly'
 };

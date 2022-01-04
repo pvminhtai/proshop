@@ -16,15 +16,15 @@
   "author": "Minh Tai",
   "license": "ISC",
   "dependencies": {
-    "ajv": "^8.6.3",
+    "ajv": "^8.8.2",
     "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "http-errors": "^1.8.0",
+    "express": "^4.17.2",
+    "http-errors": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.0.6",
+    "mongoose": "^6.1.3",
     "winston": "^3.3.3",
     "winston-daily-rotate-file": "^4.5.5"
   },
@@ -32,9 +32,9 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.4.1"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1"
   }
 }

@@ -1,8 +1,8 @@
-const { STATUS_CODES } = require('../../constants');
+const { STATUS_CODES } = require('../constants');
 
 class UnauthorizedError extends Error {
   constructor(message) {
-    super(message || 'Unauthorized');
+    super(message ?? 'Unauthorized');
     this.status = STATUS_CODES.UNAUTHORIZED;
   }
 }
