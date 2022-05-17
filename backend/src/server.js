@@ -1,17 +1,13 @@
-const express = require('express');
-const { PORT } = require('./configs');
-const { logger } = require('./helpers');
-const loaders = require('./loaders');
+const App = require('./app');
+const { PORT } = require('./config');
 
 (async () => {
-  const app = express();
+  const app = new App();
 
-  await loaders(app);
+  await app.connectToDatabase();
+  app.initializeMiddlewares();
+  app.initializeRoutes();
+  app.initializeErrorHandler();
 
-  app
-    .listen(PORT, () => logger.info(`🛡️  Server is running on port ${PORT} 🛡️`))
-    .on('error', err => {
-      logger.error(err);
-      process.exit(1);
-    });
+  app.listen(PORT);
 })();
